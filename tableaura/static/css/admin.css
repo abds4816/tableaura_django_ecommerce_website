@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merienda:wght@400;700&display=swap');
+
+:root {
+	--main-color: #19913b;
+	--first-color: #fff;
+	--second-color: #17262b;
+	--light-color: #1ab847;
+	--dark-color: #28753f;
+}
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Ubuntu', sans-serif;
+	text-decoration: none !important;
+}
+body {
+	background-color: var(--first-color);
+	color: var(--second-color) !important;
+}
+::selection {
+	background-color: var(--main-color);
+	color: var(--first-color);
+}
+::-webkit-scrollbar {
+	width: 12px;
+}
+::-webkit-scrollbar-track {
+	border-radius: 5px;
+}
+::-webkit-scrollbar-thumb {
+	border-radius: 5px;
+	background: var(--main-color);
+}
+
+h1 {
+	font-weight: bold !important;
+}
+
+#header {
+	background-color: rgb(255, 255, 255);
+	box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075) !important;
+	font-size: 1rem;
+	font-weight: 400;
+	line-height: 1.5;
+	color: var(--main-color) !important;
+	position: sticky;
+}
+
+#head {
+	font-size: 23px !important;
+	margin-left: 30px !important;
+	font-weight: bold !important;
+	font-family: 'Ubuntu', sans-serif !important;
+	color: var(--second-color) !important;
+	font-family: 'Ubuntu', sans-serif !important;
+}
+
+a {
+	color: var(--second-color) !important;
+	text-decoration: none !important;
+}
+
+.module h2,
+.module caption,
+.inline-group h2 {
+	background-color: var(--light-color);
+}
+
+div .breadcrumbs {
+	background-color: var(--dark-color);
+	color: var(--second-color) !important;
+}
+
+.button.default,
+input[type=submit].default,
+.submit-row input.default {
+	background-color: var(--main-color);
+}
+.button.default:hover,
+input[type=submit].default:hover,
+.submit-row input.default:hover {
+	background-color: var(--dark-color);
+}
+
+.button,
+input[type=submit],
+input[type=button],
+.submit-row input,
+a.button {
+	background-color: var(--light-color);
+}
+
+.button:hover,
+input[type=submit]:hover,
+input[type=button]:hover,
+.submit-row input:hover,
+a.button:hover {
+	background-color: var(--main-color);
+}
+
+.object-tools a:link,
+.object-tools a:visited {
+	background: var(--main-color);
+	color: var(--second-color);
+}

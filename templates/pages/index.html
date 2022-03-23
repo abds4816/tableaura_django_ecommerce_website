@@ -1,0 +1,196 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+ - Donne Ta Maison Un Decoration
+{% endblock title %}
+
+{% block header %}
+<div class="header">
+{% endblock header %}
+
+{% block content %}
+
+  <!-- start header -->
+  <header class="hero py-5" id="her">
+    <div class="container mb-5">
+      <div class="row mb-5 py-5">
+        <div class="col-lg-8 col-md-6 col-sm-12 intro" data-aos="fade-right" data-aos-duration="1200">
+          <div class="my-5 pt-5">
+            <p class="lead display-6 fw-bold pt-5">Donne Ta Maison Un Decoration</p>
+            <p class="lead display-4"><span class="typed fw-bold"></span></p>
+            <p class="lead w-75 text-intro">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Mollitia repellendus vel voluptatem commodi incidunt unde.</p>
+            <a href="{% url 'products' %}" class="btn main-btn btn-lg my-4">parcourir les produits</a>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12">
+          <!-- <img src="images/hello.png" alt="hero" class="img-fluid" data-aos="zoom-out-up" data-aos-duration="1500"> -->
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- end header -->
+</div>
+
+  <!-- start best categories -->
+  <section id="categories">
+    <div class="container my-5">
+      <h6 class="fw-bold title text-center mt-5 mb-3 display-5">Meille<span>ures</span> Catégo<span>ries</span></h6>
+      <div class="row justify-content-center w-75 mx-auto py-5 mb-5">
+        {% for category in categories|slice:3 %}
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-2">
+          <div class="card text-center mb-3" data-aos="fade-up" data-aos-duration="1200">
+            <img src="{{category.image.url}}" alt="portfolio">
+            <div class="link">
+              <a href="{% url 'category' cat_id=category.id %}" class="sublink pt-2">{{category.category_name}}</a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+  <!-- end best categories -->
+
+  <!-- start latest products -->
+  <section id="latest">
+    <div class="container my-5">
+      <h6 class="fw-bold title text-center mt-5 mb-3 display-5">Dern<span>iers</span> Prod<span>uits</span></h6>
+      <div class="row py-5 my-5 jusify-content-center mx-auto">
+        <div class="owl-carousel owl-theme">
+          {% for product in products|slice:5 %}
+          <div class="item">
+            <div class="card w-100 text-center py-2">
+              <img src="{{product.photo.url}}" class="card-img-top" height="200px" alt="product">
+              <div class="card-body">
+                <p class="small-cat">{{product.category|title}}</p>
+                <div class="name">{{product.name}}</div>
+                <div class="price mt-2 mb-3">{{product.sm_price}} - {{product.lg_price}}DH</div>
+                <a href="{% url 'product' pro_id=product.id %}" class="btn main-btn">voir les détails</a>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- end latest products -->
+
+  <!-- start popular products -->
+  <section id="latest">
+    <div class="container my-5">
+      <h6 class="fw-bold title text-center mt-5 mb-3 display-5">Prod<span>uits</span> Popula<span>ires</span></h6>
+      <div class="row py-5 my-5 jusify-content-center mx-auto">
+        <div class="owl-carousel owl-theme">
+          {% for product in populars|slice:5 %}
+          <div class="item">
+            <div class="card w-100 text-center py-2">
+              <img src="{{product.photo.url}}" class="card-img-top" height="200px" alt="product">
+              <div class="card-body">
+                <p class="small-cat">{{product.category|title}}</p>
+                <div class="name">{{product.name}}</div>
+                <div class="price mt-2 mb-3">{{product.sm_price}} - {{product.lg_price}}DH</div>
+                <a href="{% url 'product' pro_id=product.id %}" class="btn main-btn">voir les détails</a>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- end popular products -->
+
+  <!-- start reviews -->
+  <section id="reviews">
+    <div class="container my-5 py-5 w-75 mx-auto">
+      <h6 class="fw-bold title text-center mt-5 mb-3 display-5">Avis Cli<span>ents</span></h6>
+      <div class="row py-5">
+        <div class="col-md-4 col-sm-12 my-auto" data-aos="fade-up" data-aos-duration="1200">
+          <div class="card text-center py-3">
+            <div class="card-body">
+              <div class="card-title mb-3"><i class="bi bi-chat-quote"></i></div>
+              <div class="card-text mb-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos distinctio dolores iste iure ullam voluptatem!.</div>
+              <div class="dflex justify-content-center star mb-3">
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-half"></i>
+              </div>
+              <img class="reviewer mb-3" src="{% static 'images/pic1.png' %}" alt="reviewer">
+              <div class="name">Oumaima Jackson</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-12 my-auto" data-aos="fade-down" data-aos-duration="1200">
+          <div class="card text-center py-3">
+            <div class="card-body">
+              <div class="card-title mb-3"><i class="bi bi-chat-quote"></i></div>
+              <div class="card-text mb-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos distinctio dolores iste iure ullam voluptatem!.</div>
+              <div class="dflex justify-content-center star mb-3">
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star"></i>
+              </div>
+              <img class="reviewer mb-3" src="{% static 'images/pic2.png' %}" alt="reviewer">
+              <div class="name">Mehdi Jeorge</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-12 my-auto" data-aos="fade-up" data-aos-duration="1200">
+          <div class="card text-center py-3">
+            <div class="card-body">
+              <div class="card-title mb-3"><i class="bi bi-chat-quote"></i></div>
+              <div class="card-text mb-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos distinctio dolores iste iure ullam voluptatem!.</div>
+              <div class="dflex justify-content-center star mb-3">
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+              </div>
+              <img class="reviewer mb-3" src="{% static 'images/pic3.png' %}" alt="reviewer">
+              <div class="name">Enma Jotaro</div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </section>
+  <!-- end reviews -->
+  
+  <!-- start features -->
+  <section id="features">
+    <div class="container px-lg-5 px-md-4 my-5">
+      <h6 class="fw-bold title text-center mt-5 mb-3 display-5">Pour<span>quoi</span> no<span>us?</span></h6>
+        <div class="row justify-content-center mx-auto text-center my-b py-5">
+            <div class="col-lg-4 col-md-6 col-sm-12 my-2" data-aos="fade-up" data-aos-duration="1200">
+                <h1 class="font-weight-bold">
+                    <i class="bi bi-truck"></i>
+                </h1>
+                <h4 class="font-weight-bold">livraison express</h4>
+                <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere iusto repudiandae saepe ipsam voluptatem fuga?</p>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 my-2" data-aos="fade-up" data-aos-duration="1500">
+                <h1 class="font-weight-bold">
+                    <i class="bi bi-award"></i>
+                </h1>
+                <h4 class="font-weight-bold">Haute qualité</h4>
+                <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere iusto repudiandae saepe ipsam voluptatem fuga?</p>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 my-2" data-aos="fade-up" data-aos-duration="1200">
+                <h1 class="font-weight-bold">
+                    <i class="bi bi-cash"></i>
+                </h1>
+                <h4 class="font-weight-bold">prix convenable</h4>
+                <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere iusto repudiandae saepe ipsam voluptatem fuga?</p>
+            </div>
+        </div>
+    </div>
+  </section>
+  <!-- end features -->
+
+{% endblock content %}

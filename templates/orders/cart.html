@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+- mon panier
+{% endblock title %}
+
+{% block content %}
+
+  <!-- start cart -->
+  <section id="cart">
+    <div class="container my-5 py-5 w-75 mx-auto">
+      <h6 class="fw-bold title text-center mt-5 pt-5 mb-3 display-5">Mon Pa<span>nier</span></h6>
+
+      {% include 'parts/messages.html' %}
+
+      {% if cart %}
+      <div class="row justify-content-center py-5">
+        <table class="table shadow text-start mx-auto">
+            <thead>
+              <tr>
+                <th scope="col">Produit</th>
+                <th scope="col">Quantité</th>
+                <th scope="col">Demonsions</th>
+                <th scope="col">Prix</th>
+                <th scope="col">Effacer</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for item in cart %}
+              {% with product=item.product %}
+              <tr>
+                <td>
+                  <a href="{% url 'product' pro_id=product.id %}">
+                    <img src="{{product.photo.url}}" class="pe-3" style="height:50px;">
+                  </a>
+                  {{product.name}}
+                </td>
+                <td>
+                    <form action="{% url 'update_cart' pro_id=product.id %}" method="POST" class="edit-qty">
+                      {% csrf_token %}
+                        <input class="form-control product-qty text-center me-3" name="new_qty" type="num" value="{{item.quantity}}" style="max-width: 3rem" />
+                        <button style="border: none; background: transparent;" type="submit"><i class="bi bi-pen-fill"></i></button>
+                    </form>
+                </td>
+                <td>{{item.demonsions}}</td>
+                <td class="pt-4">{{item.price}}DH</td>
+                <td class="text-center pt-4"><a href="{% url 'remove_from_cart' pro_id=product.id %}"><i class="bi bi-trash-fill text-danger"></i></a></td>
+              </tr>
+              {% endwith %}
+              {% endfor %}
+              <tr class="text-center">
+                  <td colspan="2" class="fw-bold">total:</td>
+                  <td colspan="2" class="cart-total text-start">{{cart.get_total_price}}DH</td>
+              </tr>
+            </tbody>
+        </table>
+      </div>
+      <div class="row w-50 mx-auto mb-3">
+        <div class="cart-btns">
+          <a href="{% url 'products' %}" class="btn second-btn mb-3">&#8592; retour aux produits</a>
+          <a href="{% url 'checkout' %}" class="btn main-btn mb-3">aller à la caisse &#8594;</a>
+        </div>
+      </div>
+      {% else %}
+      <div class="row justify-content-center py-5">
+      <div class="col-lg-6 col-md-6 col-sm-12">
+        <div class="mt-5 pt-5">
+          <img src="{% static 'images/empty_cart.svg' %}" alt="hero" class="img-fluid" data-aos="zoom-out-up" data-aos-duration="1500">
+        </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 my-auto intro" data-aos="fade-right" data-aos-duration="1200">
+          <div class="mt-5">
+              <h3 class="fw-bold ms-md-5 my-2">
+                Malheureusement
+              </h3>
+              <p class="lead ms-md-5">Votre panier est vide.
+                <br>Vous pouvez lister les produits pour ajouter ce que vous voulez à votre panier.
+              </p>
+              <a href="{% url 'products' %}" class="btn second-btn ms-md-5 mt-3">Tous Les Produits</a>
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </section>
+  <!-- end cart -->
+
+{% endblock content %}

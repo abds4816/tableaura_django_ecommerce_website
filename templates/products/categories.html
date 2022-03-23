@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+ - Tous Les Catégories
+{% endblock title %}
+
+{% block content %}
+
+  <!-- start categories -->
+  <section id="categories">
+    <div class="container my-5 py-5 w-75 mx-auto">
+      <h6 class="fw-bold title text-center mt-5 pt-5 mb-3 display-5">Tous Les Catégo<span>ries</span></h6>
+      <div class="row justify-content-center py-5">
+        {% for category in categories %}
+          <div class="col-lg-4 col-md-6 col-sm-12 my-3">
+              <div class="card text-center mb-3">
+              <img src="{{category.image.url}}" alt="portfolio">
+              <div class="link">
+                  <a href="{% url 'category' cat_id=category.id %}" class="sublink pt-2">{{category.category_name}}</a>
+              </div>
+              </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+  <!-- end categories -->
+
+  <!-- start pagination -->
+  {% if categories.has_other_pages %}
+  <div aria-label="Page navigation example my-5 py-5">
+    <ul class="pagination justify-content-center">
+      {% if categories.has_previous %}
+      <li class="page-item">
+        <a class="page-link prev-btn" href="?page={{ categories.previous_page_number }}" tabindex="-1" aria-disabled="true">précédent</a>
+      </li>
+      {% endif %}
+
+      {% for i in categories.paginator.page_range %}
+      <li class="page-item"><a class="page-link page-btn" href="?page={{i}}">{{i}}</a></li>
+      {% endfor %}
+
+      {% if categories.has_next %}
+      <li class="page-item">
+        <a class="page-link next-btn" href="?page={{ categories.next_page_number }}">suivant</a>
+      </li>
+      {% endif %}
+    </ul>
+  </div>
+  {% endif %}
+  <!-- end pagination -->
+
+{% endblock content %}

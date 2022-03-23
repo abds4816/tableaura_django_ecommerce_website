@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+ - Merci de votre Confiance
+{% endblock title %}
+
+{% block content %}
+
+<!-- start thank -->
+<section id="thank mt-5 py-5">
+    <div class="container-fluid px-lg-5 px-md-4 my-5">
+        <div class="row mt-5 py-5">
+          <div class="col-lg-6 col-md-6 col-sm-12 intro mt-5" data-aos="fade-right" data-aos-duration="1200">
+            <div class="mt-5">
+                <h3 class="fw-bold ms-5 my-2">
+                    Merci de votre<br><span class="display-4 confiance">Confiance</span>
+                </h3>
+                <p class="lead ml-5 ms-3">Votre demande a été reçue et nous vous contacterons sous peu.
+                </p>
+                <p class="lead ml-5 ms-3">Vous pouvez revenir à la page d'accueil ici.
+                </p>
+                <a href="{% url 'index' %}" class="btn second-btn ms-5">&#8592; Accueil</a>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-12 mt-5">
+              <div class="mt-5 pt-5">
+                  <img src="{% static 'images/contact.svg' %}" alt="hero" class="img-fluid" data-aos="zoom-out-up" data-aos-duration="1500">
+                </div>
+          </div>
+        </div>
+    </div>
+</section>
+<!-- end thank -->
+
+{% endblock content %}

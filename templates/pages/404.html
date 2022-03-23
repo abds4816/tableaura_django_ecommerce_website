@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+ - Page Not Found
+{% endblock title %}
+
+{% block content %}
+
+<!-- start 404 page -->
+<section id="notfound">
+    <div class="container px-lg-5 px-md-4 my-5 py-5">
+        <div class="row text-center mx-auto py-1">
+            <div class="mt-2 mx-auto">
+                <img src="{% static 'images/lost.svg' %}" alt="hero" class="img-fluid" data-aos="zoom-out-up" data-aos-duration="1500">
+            </div>
+            <div class="mt-2">
+                <h4 class="ms-1 my-3">
+                    <span class="fw-bold display-4 main-color">Ouups !&nbsp;</span>&nbsp;Page non trouvée.
+                </h4>
+                <p class="mt-3">La page que vous recherchez a été déplacée, supprimée, renommée ou n'a peut-être jamais existé.
+                </p>
+                <div class="">
+                    <div class="input-group mx-auto mb-3">
+                        <input type="text" class="form-control" placeholder="rechercher ici" aria-label="Username" aria-describedby="basic-addon1">
+                        <span class="input-group-text prev-btn" id="basic-addon1">
+                            <i class="bi bi-search"></i>
+                        </span>
+                      </div>
+                </div>
+                <a href="{% url 'index' %}" class="btn second-btn mx-auto mt-2">&#8592; Retourner à l'accueil</a>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end 404 page -->
+
+{% endblock content %}

@@ -1,0 +1,149 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+ - à propos de nous
+{% endblock title %}
+
+{% block content %}
+
+  <!-- start header -->
+  <header class="hero py-5" id="her">
+    <div class="container px-lg-5 px-md-4 mb-3">
+      <div class="row pt-5">
+        <div class="col-12 text-center intro" data-aos="zoom-in" data-aos-duration="1200">
+          <div class="mt-5">
+            <p class="lead display-6">Donne Ta Maison Un Decoration</p>
+            <p class="lead display-4 ms-4"><span class="typed fw-bold"></span></p>
+            <p class="lead w-50 mx-auto">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Mollitia repellendus vel voluptatem commodi incidunt unde.</p>
+            <a href="{% url 'products' %}" class="btn main-btn btn-lg ms-4 mt-4">parcourir les produits</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- end header -->
+
+  <!-- start introduce -->
+  <section id="introduce">
+      <div class="container my-5 py-5">
+          <div class="row py-5">
+              <div class="col-lg-4 col-md-6 col-sm-12">
+                  <h1 class="display-4">
+                      une brève introduction à propos de <span class="font-weight-bold">Tableaura.</span>
+                  </h1>
+              </div>
+              <div class="col-lg-4 col-md-6 col-sm-12">
+                  <p class="lead py-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi laborum, veniam vero minus quo officiis quas rem quam nobis ad vitae labore, provident aut dolor aperiam. Magnam iste in aliquid reiciendis eius, autem quisquam accusamus voluptates quod laudantium, nulla quos ea.</p>
+              </div>
+              <div class="col-lg-4 col-md-6 col-sm-12">
+                  <p class="lead py-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure illum adipisci nesciunt autem nostrum iusto nisi sint ex laborum! Iste iusto quos, vero inventore ut accusamus delectus eveniet placeat itaque?</p>
+              </div>
+          </div>
+      </div>
+  </section>
+  <!-- end introduce -->
+
+   <!-- start localisation -->
+   <section id="localisation">
+      <div class="container px-lg-5 px-md-4 my-5">
+        <h6 class="fw-bold title text-center mt-5 mb-3 display-5">Notre localis<span>ation</span></h6>
+          <div class="row mx-auto my-5 py-5">
+              <iframe data-aos="zoom-in" data-aos-duration="1200" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d965.1006863442146!2d-9.650543298720011!3d30.457984930761192!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdb3b387f4bbcd25%3A0x4c03c6956e38cb0!2sTAKHFIDAT%20TADDART!5e0!3m2!1sen!2sma!4v1632418876671!5m2!1sen!2sma" width="800" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+          </div>
+      </div>
+    </section>
+    <!-- end localisation -->
+
+  <!-- start reviews -->
+  <section id="reviews">
+    <div class="container my-5 py-5 w-75 mx-auto">
+      <h6 class="fw-bold title text-center mt-5 mb-3 display-5">Avis Cli<span>ents</span></h6>
+      <div class="row py-5">
+        <div class="col-md-4 col-sm-12 my-auto" data-aos="fade-up" data-aos-duration="1200">
+          <div class="card text-center py-3">
+            <div class="card-body">
+              <div class="card-title mb-3"><i class="bi bi-chat-quote"></i></div>
+              <div class="card-text mb-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos distinctio dolores iste iure ullam voluptatem!.</div>
+              <div class="dflex justify-content-center star mb-3">
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-half"></i>
+              </div>
+              <img class="reviewer mb-3" src="{% static 'images/pic1.png' %}" alt="reviewer">
+              <div class="name">Oumaima Jackson</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-12 my-auto" data-aos="fade-down" data-aos-duration="1200">
+          <div class="card text-center py-3">
+            <div class="card-body">
+              <div class="card-title mb-3"><i class="bi bi-chat-quote"></i></div>
+              <div class="card-text mb-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos distinctio dolores iste iure ullam voluptatem!.</div>
+              <div class="dflex justify-content-center star mb-3">
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star"></i>
+              </div>
+              <img class="reviewer mb-3" src="{% static 'images/pic2.png' %}" alt="reviewer">
+              <div class="name">Mehdi Jeorge</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-12 my-auto" data-aos="fade-up" data-aos-duration="1200">
+          <div class="card text-center py-3">
+            <div class="card-body">
+              <div class="card-title mb-3"><i class="bi bi-chat-quote"></i></div>
+              <div class="card-text mb-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos distinctio dolores iste iure ullam voluptatem!.</div>
+              <div class="dflex justify-content-center star mb-3">
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+              </div>
+              <img class="reviewer mb-3" src="{% static 'images/pic3.png' %}" alt="reviewer">
+              <div class="name">Enma Jotaro</div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </section>
+  <!-- end reviews -->
+  
+  <!-- start features -->
+  <section id="features">
+    <div class="container px-lg-5 px-md-4 my-5">
+      <h6 class="fw-bold title text-center mt-5 mb-3 display-5">Pour<span>quoi</span> no<span>us?</span></h6>
+        <div class="row justify-content-center mx-auto text-center my-b py-5">
+            <div class="col-lg-4 col-md-6 col-sm-12 my-2" data-aos="fade-up" data-aos-duration="1200">
+                <h1 class="font-weight-bold">
+                    <i class="bi bi-truck"></i>
+                </h1>
+                <h4 class="font-weight-bold">livraison express</h4>
+                <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere iusto repudiandae saepe ipsam voluptatem fuga?</p>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 my-2" data-aos="fade-up" data-aos-duration="1500">
+                <h1 class="font-weight-bold">
+                    <i class="bi bi-award"></i>
+                </h1>
+                <h4 class="font-weight-bold">Haute qualité</h4>
+                <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere iusto repudiandae saepe ipsam voluptatem fuga?</p>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 my-2" data-aos="fade-up" data-aos-duration="1200">
+                <h1 class="font-weight-bold">
+                    <i class="bi bi-cash"></i>
+                </h1>
+                <h4 class="font-weight-bold">prix convenable</h4>
+                <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere iusto repudiandae saepe ipsam voluptatem fuga?</p>
+            </div>
+        </div>
+    </div>
+  </section>
+  <!-- end features -->
+
+{% endblock content %}

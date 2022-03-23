@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+  {% if 'category' in request.path %}
+    - {{category.category_name}}
+  {% else %}
+    - Tous Les Produits
+  {% endif %}
+{% endblock title %}
+
+{% block content %}
+
+  <!-- start products -->
+  <section id="products">
+    <div class="container my-5 py-5 w-75 mx-auto">
+      {% if 'category' in request.path %}
+      <h6 class="fw-bold title text-center mt-5 pt-5 mb-3 display-5"><span>Produits De</span> {{category.category_name|title}}</h6>
+      {% else %}
+      <h6 class="fw-bold title text-center mt-5 pt-5 mb-3 display-5">Tous Les Prod<span>uits</span></h6>
+      {% endif %}
+      <div class="row justify-content-center py-5">
+      {% for product in products %}
+        <div class="col-lg-3 col-md-6 col-sm-12">
+          <div class="card w-100 text-center py-2">
+            <img src="{{product.photo.url}}" class="card-img-top w-100" height="230px" alt="product">
+            <div class="card-body">
+              <p class="small-cat">{{product.category|title}}</p>
+              <div class="name">{{product.name}}</div>
+              <div class="price mt-2 mb-3">{{product.sm_price}} - {{product.lg_price}}DH</div>
+              <a href="{% url 'product' pro_id=product.id %}" class="btn main-btn">voir les détails</a>
+            </div>
+          </div>
+        </div>
+      {% empty %}
+        <div class="col-lg-6 col-md-6 col-sm-12">
+          <div class="mt-5 pt-5">
+            <img src="{% static 'images/empty.svg' %}" alt="hero" class="img-fluid" data-aos="zoom-out-up" data-aos-duration="1500">
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 my-auto intro" data-aos="fade-right" data-aos-duration="1200">
+          <div class="mt-5">
+              <h3 class="fw-bold ms-md-5 my-2">
+                Malheureusement
+              </h3>
+              <p class="lead ms-md-5">Aucun produit ne correspond à votre sélection.
+              </p>
+              <a href="{% url 'products' %}" class="btn second-btn ms-md-5">Tous Les Produits</a>
+          </div>
+        </div>
+      {% endfor %}
+      </div>
+    </div>
+  </section>
+  <!-- end products -->
+
+  <!-- start pagination -->
+  {% if products.has_other_pages %}
+  <div aria-label="Page navigation example my-5 py-5">
+    <ul class="pagination justify-content-center">
+      {% if products.has_previous %}
+      <li class="page-item">
+        <a class="page-link prev-btn" href="?page={{ products.previous_page_number }}" tabindex="-1" aria-disabled="true">précédent</a>
+      </li>
+      {% endif %}
+
+      {% for i in products.paginator.page_range %}
+      <li class="page-item"><a class="page-link page-btn" href="?page={{i}}">{{i}}</a></li>
+      {% endfor %}
+
+      {% if products.has_next %}
+      <li class="page-item">
+        <a class="page-link next-btn" href="?page={{ products.next_page_number }}">suivant</a>
+      </li>
+      {% endif %}
+    </ul>
+  </div>
+  {% endif %}
+  <!-- end pagination -->
+
+{% endblock content %}

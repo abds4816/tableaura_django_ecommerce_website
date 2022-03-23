@@ -1,0 +1,56 @@
+{% load static %}
+
+<!-- start navBar -->
+<nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span><i class="bi bi-list">
+        </i></span>
+      </button>
+      <a class="navbar-brand" href="{% url 'index' %}">
+        <img src="{% static 'images/logo.png' %}" width="50px" alt="logo">
+        Table<span>aura.</span>
+      </a>
+      <!-- <span class="nav-item mx-auto">
+        <div class="search-box">
+          <input type="search" placeholder="nom de produit" id="searchinp">
+          <i id="searchicon" class="bi bi-search fw-bold"></i>
+        </div>
+      </a>
+    </span> -->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto text-center mb-2 mb-lg-0 fw-bold">
+          <li class="nav-item me-2">
+            <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Accueil</a>
+          </li>
+          <li class="nav-item me-2">
+            <a class="nav-link" href="{% url 'products' %}">Produits</a>
+          </li>
+          <li class="nav-item me-2">
+            <a class="nav-link" href="{% url 'categories' %}">Catégories</a>
+          </li>
+          <li class="nav-item me-2">
+            <a class="nav-link" href="{% url 'about' %}">À propos</a>
+          </li>
+        </ul>
+      </div>      
+      <span class="nav-item me-3">
+        <a href="{% url 'cart' %}" class="nav-link">
+          <i class="bi bi-bag-fill">
+          {% if cart|length %}
+            {% if cart|length < 10 %}
+            <span class="position-absolute translate-middle badge rounded-pill bg-danger">
+              {{cart|length}}
+            </span>
+            {% else %}
+            <span class="position-absolute translate-middle badge rounded-pill bg-danger">
+              9+
+            </span>
+            {% endif %}
+          {% endif %}
+          </i>
+        </a>
+      </span>
+    </div>
+</nav>
+<!-- end navBar -->

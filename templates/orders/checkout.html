@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+ - Commander
+{% endblock title %}
+
+{% block content %}
+
+  <!-- start checkout -->
+  <section id="cart">
+    <div class="container my-5 py-5">
+      <h6 class="fw-bold title text-center mt-5 pt-5 mb-3 display-5">Comma<span>nder</span></h6>
+      {% if cart %}
+
+        {% include 'parts/messages.html' %}
+
+      <div class="row justify-content-center py-5">
+          <div class="col-lg-4 col-md-6 col-sm-12 my-auto p-3">
+              <table class="table w-100 shadow text-start">
+                  <thead>
+                    <tr>
+                      <th scope="col" class="bg-light" colspan="4">Récapitulatif de la commande</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                      {% for item in cart %}
+                      {% with product=item.product %}
+                      <tr>
+                          <td><img src="{{product.photo.url}}" class="me-2" style="height:50px;"></td>
+                          <td class="pt-4">{{item.quantity}}</td>
+                          <td class="pt-4">{{item.total_price}}DH</td>
+                      </tr>
+                      {% endwith %}
+                      {% endfor %}
+                      <tr class="text-center">
+                          <td colspan="2" class="fw-bold">total:</td>
+                          <td colspan="2" class="cart-total text-start">{{cart.get_total_price}}DH</td>
+                      </tr>
+                  </tbody>
+              </table>
+              <a href="{% url 'cart' %}" class="btn second-btn my-4 w-100">&#8592; modifier le panier</a>
+          </div>
+          <div class="col-lg-8 col-md-6 col-sm-12">
+              <div class="cod-form shadow mx-auto p-5">
+                  <h3 class="text-center fw-bold my-3">Cash On Delivery</h3>
+                  <form method="POST" class="w-100 mt-5">
+                    {% csrf_token %}
+                      <div class="col-12 mt-5">
+                          <div class="text-field">
+                              <input type="text" name="fname" required>
+                              <span></span>
+                              <label>Nom</label>
+                          </div>
+                          <div class="text-field">
+                              <input type="text" name="lname" required>
+                              <span></span>
+                              <label>Prénom</label>
+                          </div>
+                          <div class="text-field">
+                              <input type="text" name="phone" required>
+                              <span></span>
+                              <label>Téléphone</label>
+                          </div>
+                          <div class="text-field">
+                              <input type="text" name="city" required>
+                              <span></span>
+                              <label>Ville</label>
+                          </div>
+                          <button type="submit" name="btncheckout" class="btn main-btn w-100 mt-4">commander</button>
+                      </div>
+                  </form>
+              </div>
+          </div>
+      </div>
+      {% else %}
+      <div class="row justify-content-center py-5">
+        <div class="col-lg-6 col-md-6 col-sm-12">
+            <div class="mt-5 pt-5">
+              <img src="{% static 'images/empty_cart.svg' %}" alt="hero" class="img-fluid" data-aos="zoom-out-up" data-aos-duration="1500">
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 my-auto intro" data-aos="fade-right" data-aos-duration="1200">
+            <div class="mt-5">
+                <h3 class="fw-bold ms-md-5 my-2">
+                Malheureusement
+                </h3>
+                <p class="lead ms-md-5">Votre panier est vide.
+                <br>Vous pouvez lister les produits pour ajouter ce que vous voulez à votre panier.
+                </p>
+                <a href="{% url 'products' %}" class="btn second-btn ms-md-5 mt-3">Tous Les Produits</a>
+            </div>
+        </div>
+      </div>
+      {% endif %}
+    </div>
+  </section>
+  <!-- end checkout -->
+
+{% endblock content %}
